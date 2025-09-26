@@ -1,0 +1,70 @@
+    1  ls
+    2  cd lab1
+    3  ды
+    4  ls
+    5  cd src
+    6  ls
+    7  .\background.sh
+    8  background.sh &
+    9  ./background.sh &
+   10  fd
+   11  cat new_txt_file.txt << EOF
+Это текст первой лабы по сетям, 
+выполнено с помошью команды cat
+<3
+EOF
+
+   12  cat > new_txt_file.txt << EOF
+Это текст первой лабы по сетям, 
+выполнено с помошью команды cat
+<3
+EOF
+
+   13  ls
+   14  cat new_txt_file.txt
+   15  history
+   16  history > bash_history_before_clear.txt
+   17  clear
+   18  history
+   19  ls
+   20  ws new_txt_file.txt
+   21  wc new_txt_file.txt
+   22  help wc
+   23  info wc
+   24  wc -m new_txt_file.txt
+   25  echo $HISTFILE
+   26  EOF Задание 2 EOF
+   27  cat EOF Задание 2 EOF
+   28  cat EOF
+   29  clear
+   30  Задание 2
+   31  echo Задание 2
+   32  grep 'cake' cake_rhymes.txt | cat > with_cake.txt
+   33  cat with_cake.txt
+   34  echo без подавления 
+   35  rm sdasdfasddafsdf.txt
+   36  rm sdasasadasdasd.txt &> /dev/null
+   37  history > hist_zd_2.txt
+   38  echo Задание 3
+   39  ls -l hello.sh
+   40  .
+   41  .\hello.sh
+   42  ./hello.sh
+   43  chmod -x hello.sh
+   44  ls -l hello.sh
+   45  ./hello.sh
+   46  chmod +x hello.sh
+   47  ./hello.sh
+   48  cat > script_zd_3.sh << EOF
+#!/bin/bash
+echo " путь"
+echo "&PWD"
+echo "дата и время $(date +'%Y-%m-%d %H:%M:%S')"
+echo "Переменая PATH $PATH"
+EOF
+
+   49  ./script_zd_3.sh
+   50  ls -l script_zd_3.sh
+   51  chmod +x script_zd_3.sh
+   52  ./script_zd_3.sh
+   53  history > hist_zd_3.txt

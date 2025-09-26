@@ -1,0 +1,26 @@
+    1  ls
+    2  cd lab1
+    3  ды
+    4  ls
+    5  cd src
+    6  ls
+    7  .\background.sh
+    8  background.sh &
+    9  ./background.sh &
+   10  fd
+   11  cat new_txt_file.txt << EOF
+Это текст первой лабы по сетям, 
+выполнено с помошью команды cat
+<3
+EOF
+
+   12  cat > new_txt_file.txt << EOF
+Это текст первой лабы по сетям, 
+выполнено с помошью команды cat
+<3
+EOF
+
+   13  ls
+   14  cat new_txt_file.txt
+   15  history
+   16  history > bash_history_before_clear.txt

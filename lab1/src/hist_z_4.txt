@@ -1,0 +1,141 @@
+    1  cat > average.sh << EOF
+#!/bin/bash
+
+# Скрипт для подсчета количества и среднего арифметического аргументов
+
+if [ $# -eq 0 ]; then
+    echo "Ошибка: Необходимо передать числа как аргументы"
+    echo "Использование: $0 <число1> <число2> ... <числоN>"
+    exit 1
+fi
+
+count=$#
+sum=0
+
+# Суммируем все аргументы
+for num in "$@"; do
+    # Проверяем, что аргумент - число
+    if ! [[ "$num" =~ ^-?[0-9]+$ ]]; then
+        echo "Ошибка: '$num' не является числом" >&2
+        exit 1
+    fi
+    sum=$((sum + num))
+done
+
+# Вычисляем среднее арифметическое
+average=$(echo "scale=2; $sum / $count" | bc)
+
+# Выводим результаты
+echo "Количество чисел: $count"
+echo "Сумма чисел: $sum"
+echo "Среднее арифметическое: $average"
+EOF
+
+    2  rm average.sh
+    3  cd lab1/src
+    4  cat > average.sh << EOF
+#!/bin/bash
+
+# Скрипт для подсчета количества и среднего арифметического аргументов
+
+if [ $# -eq 0 ]; then
+    echo "Ошибка: Необходимо передать числа как аргументы"
+    echo "Использование: $0 <число1> <число2> ... <числоN>"
+    exit 1
+fi
+
+count=$#
+sum=0
+
+# Суммируем все аргументы
+for num in "$@"; do
+    # Проверяем, что аргумент - число
+    if ! [[ "$num" =~ ^-?[0-9]+$ ]]; then
+        echo "Ошибка: '$num' не является числом" >&2
+        exit 1
+    fi
+    sum=$((sum + num))
+done
+
+# Вычисляем среднее арифметическое
+average=$(echo "scale=2; $sum / $count" | bc)
+
+# Выводим результаты
+echo "Количество чисел: $count"
+echo "Сумма чисел: $sum"
+echo "Среднее арифметическое: $average"
+EOF
+
+    5  ./average.sh 10 20 30
+    6  chmod +x average.sh
+    7  ./average.sh 10 20 30
+    8  cat > average.sh << EOF
+#!/bin/bash
+
+# Скрипт для подсчета количества и среднего арифметического аргументов
+
+if [ $# -eq 0 ]; then
+    echo "Ошибка: Необходимо передать числа как аргументы"
+    echo "Использование: $0 <число1> <число2> ... <числоN>"
+    exit 1
+fi
+
+count=$#
+sum=0
+
+# Суммируем все аргументы
+for num in "$@"; do
+    # Проверяем, что аргумент - число
+    if ! [[ "$num" =~ ^-?[0-9]+$ ]]; then
+        echo "Ошибка: '$num' не является числом" >&2
+        exit 1
+    fi
+    sum=$((sum + num))
+done
+
+# Вычисляем среднее арифметическое (без bc)
+average=$((sum / count))
+remainder=$((sum % count))
+
+# Выводим результаты
+echo "Количество чисел: $count"
+echo "Сумма чисел: $sum"
+echo "Среднее арифметическое: $average (остаток: $remainder/$count)"
+EOF
+
+    9  bash average.sh 10 20 30
+   10  ./average.sh 10 20 30
+   11  ./average.sh 10 20 30 40 50 
+   12  #!/bin/bash
+   13  # Создаем 150 случайных чисел в диапазоне 1-1000
+   14  for i in {1..150}; do
+    echo $(( $(od -An -N2 -i /dev/urandom) % 1000 + 1 )); done > numbers.txt
+   15  echo "Файл numbers.txt создан с 150 случайными числами"
+   16  ./average.sh $(cat numbers.txt)
+   17  cat numbers.txt | ./average.sh
+   18  ./average.sh | cat numbers.txt
+   19  ./average.sh  $(cat numbers.txt)
+   20  cat numbers.txt | xargs ./average.sh
+   21  for i in {1..150}; do
+    cat >> numbers.txt << "$(( $(od -An -N2 -i /dev/urandom) % 1000 + 1 )) "; done
+
+s
+EOF
+
+
+
+
+
+
+
+
+
+   22  for i in {1..150}; do
+    cat >> numbers.txt << "$(( $(od -An -N2 -i /dev/urandom) % 1000 + 1 )) ";
+   23  # Очищаем файл и начинаем новую строку
+   24  > numbers.txt
+   25  for i in {1..150}; do     echo -n "$(( $(od -An -N2 -i /dev/urandom) % 1000 + 1 )) " >> numbers.txt; done
+   26  # Добавляем перевод строки в конце
+   27  echo >> numbers.txt
+   28  ./average.sh  $(cat numbers.txt)
+   29  history > hist_z_4.txt
